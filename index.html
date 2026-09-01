@@ -29,8 +29,8 @@
       content="https://daridarom.github.io/aleksey-gorshkov/assets/og.png"
     />
     <link rel="canonical" href="https://daridarom.github.io/aleksey-gorshkov/" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=2" />
     <title>Алексей Горшков — проекты, опыт и компетенции</title>
   </head>
   <body>
@@ -39,8 +39,17 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="В начало страницы">
-          <span class="brand-mark">АГ</span>
-          <span class="brand-name">Алексей Горшков</span>
+          <img
+            class="brand-mark"
+            src="assets/favicon.svg?v=2"
+            alt=""
+            width="48"
+            height="52"
+          />
+          <span class="brand-copy">
+            <span class="brand-name">Алексей Горшков</span>
+            <span class="brand-sign">фамильный знак · лабиринт</span>
+          </span>
         </a>
 
         <nav class="main-nav" aria-label="Основная навигация">
@@ -52,7 +61,7 @@
 
         <a
           class="button button-small"
-          href="https://t.me/v_pravde"
+          href="https://vk.com/aleksey_gor"
           target="_blank"
           rel="noreferrer"
         >
@@ -99,15 +108,27 @@
             </ul>
           </div>
 
-          <figure class="hero-portrait">
+          <figure class="hero-portrait" id="portrait">
             <div class="portrait-frame">
-              <img
-                src="assets/portrait.webp"
-                alt="Портрет Алексея Горшкова"
-                width="1200"
-                height="1200"
-                fetchpriority="high"
-              />
+              <picture>
+                <source
+                  media="(max-width: 620px)"
+                  srcset="assets/portrait-mobile.webp"
+                />
+                <img
+                  src="assets/portrait.webp"
+                  alt="Портрет Алексея Горшкова"
+                  width="1200"
+                  height="1200"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+              <span class="portrait-scan" aria-hidden="true"></span>
+            </div>
+            <div class="portrait-data" aria-hidden="true">
+              <span>PROFILE / 01</span>
+              <span>CRIMEA · 45°</span>
             </div>
             <figcaption>
               Созидательные проекты на стыке общества, технологий и развития
@@ -278,15 +299,25 @@
             </ol>
           </div>
 
-          <figure class="speaker-photo">
-            <img
-              src="assets/speaker.webp"
-              alt="Алексей Горшков выступает на площадке медиагруппы «Патриот»"
-              width="1600"
-              height="898"
-              loading="lazy"
-            />
+          <figure class="speaker-photo" id="public-speaking">
+            <div class="media-window media-window-speaker">
+              <picture>
+                <source
+                  media="(max-width: 620px)"
+                  srcset="assets/speaker-mobile.webp"
+                />
+                <img
+                  src="assets/speaker.webp"
+                  alt="Алексей Горшков выступает на площадке медиагруппы «Патриот»"
+                  width="1600"
+                  height="898"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
             <figcaption>
+              <span>Публичная работа / 2026</span>
               Публичные выступления и работа со смыслами — часть проектного
               управления, а не отдельная витрина.
             </figcaption>
@@ -352,14 +383,23 @@
             </article>
           </div>
 
-          <figure class="vision-photo">
-            <img
-              src="assets/vision.webp"
-              alt="Стилизованный портрет Алексея Горшкова и крымский пейзаж"
-              width="1599"
-              height="900"
-              loading="lazy"
-            />
+          <figure class="vision-photo" id="vision">
+            <div class="media-window media-window-vision">
+              <picture>
+                <source
+                  media="(max-width: 620px)"
+                  srcset="assets/vision-mobile.webp"
+                />
+                <img
+                  src="assets/vision.webp"
+                  alt="Стилизованный портрет Алексея Горшкова и крымский пейзаж"
+                  width="1599"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
             <figcaption>
               <span>Видение</span>
               Технологии ценны тогда, когда помогают человеку точнее мыслить,
@@ -431,11 +471,11 @@
             </p>
             <a
               class="button button-dark"
-              href="https://t.me/v_pravde"
+              href="https://vk.com/aleksey_gor"
               target="_blank"
               rel="noreferrer"
             >
-              Обсудить проект <span aria-hidden="true">↗</span>
+              Написать ВКонтакте <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -450,7 +490,6 @@
         </div>
         <div class="footer-links">
           <a href="https://vk.com/aleksey_gor" target="_blank" rel="noreferrer">ВКонтакте ↗</a>
-          <a href="https://t.me/v_pravde" target="_blank" rel="noreferrer">Telegram ↗</a>
           <a href="https://github.com/Daridarom" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </div>
