@@ -1,0 +1,25 @@
+.now { background: rgba(214, 224, 214, .58); border-block: 1px solid rgba(16,32,25,.08); }
+.feed-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.source-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.source-pill, .library-filter { border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink-soft); padding: 7px 9px; font-size: 10px; }
+.source-pill.active, .library-filter.active { color: white; background: var(--ink); border-color: var(--ink); }
+.feed-note { color: #78857d; font-size: 10px; }
+.feed-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; }
+.feed-card { grid-column: span 4; min-height: 238px; display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--line); border-radius: 24px; background: rgba(248,247,241,.66); }
+.feed-card.featured { grid-column: span 8; }
+.feed-source { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #77847c; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.feed-card h3 { margin: 24px 0 8px; font-family: var(--serif); font-size: 25px; line-height: 1.05; font-weight: 500; letter-spacing: -.025em; }
+.feed-card p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
+.feed-card a { margin-top: auto; padding-top: 18px; font-size: 10px; font-weight: 750; }
+.loading-card { grid-column: 1/-1; padding: 30px; border: 1px dashed var(--line); border-radius: 22px; color: var(--ink-soft); }
+
+.library-filters { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 16px; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; }
+.knowledge-card { grid-column: span 4; min-height: 295px; position: relative; overflow: hidden; padding: 20px; border: 1px solid var(--line); border-radius: 25px; background: rgba(255,255,255,.28); text-align: left; color: inherit; }
+.knowledge-card.wide { grid-column: span 8; }
+.knowledge-card::after { content: ""; position: absolute; width: 170px; height: 170px; right: -60px; bottom: -100px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--card-color, #6aa98b), transparent 68%); opacity: .18; }
+.knowledge-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 9px; color: #748078; text-transform: uppercase; letter-spacing: .08em; }
+.knowledge-card h3 { margin: 28px 0 8px; max-width: 580px; font-family: var(--serif); font-size: 27px; font-weight: 500; line-height: 1.07; letter-spacing: -.03em; }
+.knowledge-card p { max-width: 580px; margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
+.status-row { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; flex-wrap: wrap; gap: 5px; z-index: 2; }
+.status-row span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 7px; color: #6f7c74; background: rgba(255,255,255,.22); font-size: 8px; }
