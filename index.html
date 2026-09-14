@@ -4,19 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#eef0e9" />
-  <meta name="description" content="Алексей Горшков — личное цифровое пространство: опыт, проекты, знания, текущая деятельность и Ясень — навигатор по связям между ними." />
-  <meta property="og:title" content="Алексей Горшков — личное цифровое пространство" />
-  <meta property="og:description" content="Не резюме и не блог. Опыт, знания, проекты и связи — в одном пространстве." />
+  <meta name="description" content="Алексей Горшков — общественные, образовательные, экологические и технологические проекты. Личный сайт, опыт, проекты и библиотека интересов." />
+  <meta property="og:title" content="Алексей Горшков — личный сайт" />
+  <meta property="og:description" content="Опыт, проекты, общественная деятельность и библиотека интересов." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:url" content="https://daridarom.github.io/aleksey-gorshkov/" />
   <meta property="og:image" content="https://daridarom.github.io/aleksey-gorshkov/assets/og.png" />
   <link rel="canonical" href="https://daridarom.github.io/aleksey-gorshkov/" />
-  <link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles-v3-base.css?v=3" />
-  <link rel="stylesheet" href="styles-v3-content.css?v=3" />
-  <link rel="stylesheet" href="styles-v3-ui.css?v=3" />
-  <title>Алексей Горшков — личное цифровое пространство</title>
+  <link rel="icon" href="assets/favicon.svg?v=31" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles-v3-base.css?v=31" />
+  <link rel="stylesheet" href="styles-v3-content.css?v=31" />
+  <link rel="stylesheet" href="styles-v3-ui.css?v=31" />
+  <link rel="stylesheet" href="styles-v3-overrides.css?v=31" />
+  <title>Алексей Горшков — личный сайт</title>
 </head>
 <body>
   <a class="skip-link" href="#content">Перейти к содержанию</a>
@@ -25,23 +26,15 @@
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="В начало страницы">
         <img class="brand-mark" src="assets/favicon.svg?v=3" alt="" width="42" height="46" />
-        <span>
-          <strong>Алексей Горшков</strong>
-          <small>личное цифровое пространство</small>
-        </span>
+        <span><strong>Алексей Горшков</strong><small>личный сайт</small></span>
       </a>
-
       <nav class="main-nav" aria-label="Основная навигация">
-        <a href="#me">Я</a>
-        <a href="#knowledge">Знаю</a>
-        <a href="#projects">Делал</a>
+        <a href="#about">Обо мне</a>
+        <a href="#projects">Проекты</a>
         <a href="#now">Сейчас</a>
+        <a href="#knowledge">Библиотека</a>
       </nav>
-
-      <button class="yasen-button" data-yasen-open>
-        <span class="leaf-dot" aria-hidden="true"></span>
-        Спросить Ясеня
-      </button>
+      <button class="yasen-button" data-yasen-open><span class="leaf-dot" aria-hidden="true"></span>Спросить Ясеня</button>
     </div>
   </header>
 
@@ -49,21 +42,16 @@
     <section class="hero section-pad">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Люди · знания · проекты · связи</p>
-          <h1>Это не резюме.<br /><em>Это моя цифровая территория.</em></h1>
-          <p class="hero-lead">
-            Здесь я собираю то, через что уже прошёл, что понял, что создал и что считаю полезным передать дальше. Можно познакомиться со мной, пройтись по проектам, найти знания или просто спросить Ясеня.
-          </p>
+          <p class="eyebrow">Крым · общественные · образовательные · экологические проекты</p>
+          <h1>Алексей Горшков<em>люди, смыслы, проекты и технологии</em></h1>
+          <p class="hero-role">Общественный деятель · руководитель РЭО Крым · ветеран боевых действий · участник образовательных, медийных и территориальных проектов</p>
+          <p class="hero-lead">Соединяю людей, идеи, технологии и территории. Этот сайт — в первую очередь обо мне и моём опыте. А глубже внутри — библиотека тем, книг, методов и связей, которые сформировали мой взгляд.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#entry">Выбрать маршрут ↓</a>
-            <button class="button ghost" data-yasen-open>Спросить Ясеня ✦</button>
+            <a class="button primary" href="#about">Обо мне ↓</a>
+            <a class="button ghost" href="#projects">Смотреть проекты</a>
           </div>
           <ul class="hero-meta" aria-label="Ключевые направления">
-            <li>Воспитание</li>
-            <li>Экология</li>
-            <li>Сообщества</li>
-            <li>Космизм</li>
-            <li>AI</li>
+            <li>Экология</li><li>Воспитание</li><li>Сообщества</li><li>Территории</li><li>AI</li>
           </ul>
         </div>
 
@@ -73,53 +61,33 @@
               <source media="(max-width: 620px)" srcset="assets/portrait-mobile.webp" />
               <img src="assets/portrait.webp" alt="Алексей Горшков" width="1200" height="1200" fetchpriority="high" decoding="async" />
             </picture>
-            <div class="portrait-overlay">
-              <span>PROFILE / LIVE</span>
-              <span>CRIMEA · 45°</span>
-            </div>
+            <div class="portrait-overlay"><span>PROFILE / 01</span><span>CRIMEA · 45°</span></div>
           </div>
-          <figcaption>
-            Я не пытаюсь рассказать о себе всё. Интереснее показать, какие темы, проекты и люди сформировали мой путь.
-          </figcaption>
+          <figcaption>Личный сайт постепенно превращается в карту опыта, проектов и интересов — но знакомство начинается с человека.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="entry section-pad-sm" id="entry">
-      <div class="container">
-        <div class="section-heading compact">
-          <div>
-            <p class="section-kicker">Начать отсюда</p>
-            <h2>Зачем ты сюда пришёл?</h2>
-          </div>
-          <p>У одного сайта может быть несколько сценариев. Главное — не показывать их все одновременно.</p>
-        </div>
-        <div class="entry-grid">
-          <a class="entry-card" href="#me">
-            <span class="entry-index">01</span><h3>Познакомиться</h3><p>Кто я, какие этапы прошёл и что из них осталось.</p><b>Я →</b>
-          </a>
-          <a class="entry-card" href="#projects">
-            <span class="entry-index">02</span><h3>Посмотреть проекты</h3><p>Не должности, а дела, роли, результаты и выводы.</p><b>Делал →</b>
-          </a>
-          <a class="entry-card" href="#knowledge">
-            <span class="entry-index">03</span><h3>Найти знания</h3><p>Методики, книги, инструменты и проверенный опыт.</p><b>Знаю →</b>
-          </a>
-          <a class="entry-card" href="#now">
-            <span class="entry-index">04</span><h3>Увидеть, что сейчас</h3><p>Свежие публикации, заметки и внешние источники.</p><b>Сейчас →</b>
-          </a>
-          <button class="entry-card entry-card-yasen" data-yasen-open>
-            <span class="entry-index">05</span><h3>Не знаю, куда идти</h3><p>Скажи по-человечески, что ищешь. Ясень попробует связать.</p><b>Спросить Ясеня ✦</b>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="me">
+    <section class="section-pad" id="about">
       <div class="container">
         <div class="section-heading">
-          <div><p class="section-kicker">Я</p><h2>Путь важнее списка должностей.</h2></div>
-          <p>Вместо длинной биографии — несколько периодов, которые реально изменили мой взгляд на людей, воспитание, ответственность, технологии и территорию.</p>
+          <div><p class="section-kicker">Обо мне</p><h2>Опыт в разных средах, одна логика — доводить до действия.</h2></div>
+          <p>Мне ближе не список регалий, а понятный ответ: где был, что делал, чему научился и что могу принести в следующий проект.</p>
         </div>
+
+        <div class="about-summary">
+          <div class="about-copy">
+            <p>Мой путь проходит через медиа и воспитательные проекты, службу, экологическую и общественную деятельность, работу с территориями и внедрение AI в реальные процессы.</p>
+            <p>Мне интересны задачи на стыке нескольких областей — там, где нужно собрать людей, смыслы, коммуникацию и понятный план действий в одну работающую систему.</p>
+          </div>
+          <div class="about-roles">
+            <div class="about-role"><small>Экология</small><strong>Руководитель РЭО Крым</strong></div>
+            <div class="about-role"><small>Опыт</small><strong>Ветеран боевых действий</strong></div>
+            <div class="about-role"><small>Образование</small><strong>Киноуроки и социальные практики</strong></div>
+            <div class="about-role"><small>Будущее</small><strong>РКО · AI · развитие территорий</strong></div>
+          </div>
+        </div>
+
         <div class="story-layout">
           <div class="story-intro">
             <picture>
@@ -136,79 +104,66 @@
       </div>
     </section>
 
-    <section class="now section-pad" id="now">
+    <section class="section-pad projects-before-library" id="projects">
       <div class="container">
         <div class="section-heading">
-          <div><p class="section-kicker">Сейчас</p><h2>Живой слой, а не вечный архив.</h2></div>
-          <p>Здесь могут автоматически появляться RSS, VK и другие внешние источники. Они не становятся частью моей библиотеки, пока я сам их не отберу.</p>
-        </div>
-        <div class="feed-toolbar">
-          <div class="source-pills" id="sourcePills" aria-label="Источники ленты"></div>
-          <span class="feed-note">Поток обновляется отдельно от «Знаю»</span>
-        </div>
-        <div class="feed-grid" id="feedGrid" aria-live="polite">
-          <div class="loading-card">Загружаю ленту…</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="knowledge">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="section-kicker">Знаю</p><h2>Не всё, что мне интересно. Только то, что уже стало знанием.</h2></div>
-          <p>У каждого материала есть контекст: как я с ним связан, что вынес и почему считаю полезным оставить здесь.</p>
-        </div>
-        <div class="library-filters" id="knowledgeFilters"></div>
-        <div class="knowledge-grid" id="knowledgeGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="connections section-pad" id="connections">
-      <div class="container">
-        <div class="connections-head">
-          <div><p class="section-kicker light">Карта связей</p><h2>Смысл появляется между разделами.</h2></div>
-          <p>Киноуроки связаны с воспитанием и сообществами. Экология — с территориями. Космизм — с ответственностью за Землю. AI — с тем, как всё это собирать и исследовать.</p>
-        </div>
-        <div class="connection-map" id="connectionMap">
-          <svg class="map-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M500 280 C380 220 290 160 170 130" />
-            <path d="M500 280 C650 225 760 180 850 135" />
-            <path d="M500 280 C650 330 730 400 835 440" />
-            <path d="M500 280 C350 345 290 410 170 445" />
-            <path d="M170 130 C310 95 400 110 500 280" />
-            <path d="M850 135 C880 250 880 350 835 440" />
-          </svg>
-          <button class="map-node main" data-node="core" style="--x:50%;--y:50%;--c:#c9ffb7">Мой опыт</button>
-          <button class="map-node" data-node="kino" style="--x:17%;--y:23%;--c:#e8c86f">Киноуроки</button>
-          <button class="map-node" data-node="eco" style="--x:85%;--y:24%;--c:#68e3cf">Экология</button>
-          <button class="map-node" data-node="rko" style="--x:83%;--y:79%;--c:#b4a4ff">Космизм / РКО</button>
-          <button class="map-node" data-node="community" style="--x:17%;--y:80%;--c:#86c8ff">Сообщества</button>
-          <button class="map-node minor" data-node="ai" style="--x:51%;--y:16%;--c:#c59cff">AI</button>
-          <div class="map-detail" id="mapDetail">
-            <small>Нажми на узел</small>
-            <strong>Здесь Ясень показывает не рубрики, а связи между опытом.</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="section-kicker">Делал</p><h2>Проекты как доказательство опыта.</h2></div>
-          <p>Один проект может одновременно быть частью биографии, источником знания и узлом будущих связей. Поэтому здесь нет отдельного «портфолио ради портфолио».</p>
+          <div><p class="section-kicker">Проекты и опыт</p><h2>То, через что я реально прошёл.</h2></div>
+          <p>Проекты здесь — не витрина ради витрины. Через них видно, с какими задачами, людьми и темами я работал.</p>
         </div>
         <div class="projects-grid" id="projectsGrid"></div>
       </div>
     </section>
 
+    <section class="now section-pad" id="now">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-kicker">Сейчас</p><h2>Что происходит в моей публичной жизни сейчас.</h2></div>
+          <p>Сюда позже можно подключить VK, RSS и другие источники. Свежий поток остаётся отдельно от постоянной библиотеки.</p>
+        </div>
+        <div class="feed-toolbar">
+          <div class="source-pills" id="sourcePills" aria-label="Источники ленты"></div>
+          <span class="feed-note">Свежие записи ≠ постоянное знание</span>
+        </div>
+        <div class="feed-grid" id="feedGrid" aria-live="polite"><div class="loading-card">Загружаю ленту…</div></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="knowledge">
+      <div class="container">
+        <div class="library-shell">
+          <div class="library-intro-grid">
+            <div>
+              <p class="section-kicker">Библиотека интересов</p>
+              <h2 style="margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-.045em;">Что меня сформировало и что я считаю полезным.</h2>
+              <p>Здесь уже можно уйти глубже: Киноуроки, воспитание, экология, космизм, AI, книги, методы. Это не главная страница обо мне — это второй слой сайта для тех, кому интересно исследовать дальше.</p>
+            </div>
+            <button class="yasen-button library-yasen" data-yasen-open><span class="leaf-dot"></span>Спросить Ясеня</button>
+          </div>
+          <div class="library-filters" id="knowledgeFilters"></div>
+          <div class="knowledge-grid" id="knowledgeGrid" aria-live="polite"></div>
+
+          <details class="connections-details" id="connections">
+            <summary>Показать связи между темами</summary>
+            <div class="connection-map" id="connectionMap">
+              <svg class="map-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M500 280 C380 220 290 160 170 130" /><path d="M500 280 C650 225 760 180 850 135" /><path d="M500 280 C650 330 730 400 835 440" /><path d="M500 280 C350 345 290 410 170 445" /><path d="M170 130 C310 95 400 110 500 280" /><path d="M850 135 C880 250 880 350 835 440" />
+              </svg>
+              <button class="map-node main" data-node="core" style="--x:50%;--y:50%;--c:#c9ffb7">Мой опыт</button>
+              <button class="map-node" data-node="kino" style="--x:17%;--y:23%;--c:#e8c86f">Киноуроки</button>
+              <button class="map-node" data-node="eco" style="--x:85%;--y:24%;--c:#68e3cf">Экология</button>
+              <button class="map-node" data-node="rko" style="--x:83%;--y:79%;--c:#b4a4ff">Космизм / РКО</button>
+              <button class="map-node" data-node="community" style="--x:17%;--y:80%;--c:#86c8ff">Сообщества</button>
+              <button class="map-node minor" data-node="ai" style="--x:51%;--y:16%;--c:#c59cff">AI</button>
+              <div class="map-detail" id="mapDetail"><small>Нажми на узел</small><strong>Связи — дополнительный слой, а не первый экран сайта.</strong></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="yasen-teaser section-pad-sm">
       <div class="container teaser-inner">
-        <div>
-          <p class="section-kicker light">Ясень</p>
-          <h2>Не нашёл нужный раздел? Спроси по-человечески.</h2>
-          <p>Первая версия Ясеня ищет по содержанию сайта и показывает связанные материалы. Позже сюда можно подключить полноценный AI-поиск по библиотеке.</p>
-        </div>
+        <div><p class="section-kicker light">Ясень</p><h2>Если не хочется листать разделы — можно просто спросить.</h2><p>Ясень пока ищет по содержанию сайта. По мере роста библиотеки его можно превратить в полноценного AI-навигационного помощника.</p></div>
         <button class="button yasen-cta" data-yasen-open>Спросить Ясеня ✦</button>
       </div>
     </section>
@@ -216,55 +171,29 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div><strong>Алексей Горшков</strong><span>личное цифровое пространство</span></div>
-      <div class="footer-links">
-        <a href="https://vk.com/aleksey_gor" target="_blank" rel="noreferrer">ВКонтакте ↗</a>
-        <a href="https://github.com/Daridarom" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </div>
+      <div><strong>Алексей Горшков</strong><span>личный сайт · опыт · проекты · библиотека</span></div>
+      <div class="footer-links"><a href="https://vk.com/aleksey_gor" target="_blank" rel="noreferrer">ВКонтакте ↗</a><a href="https://github.com/Daridarom" target="_blank" rel="noreferrer">GitHub ↗</a></div>
     </div>
   </footer>
 
   <dialog class="yasen-dialog" id="yasenDialog">
     <form method="dialog" class="yasen-shell" id="yasenForm">
-      <div class="yasen-head">
-        <div>
-          <span class="leaf-dot"></span>
-          <small>ЯСЕНЬ / навигатор по сайту</small>
-          <h2>Ну, чего ищем?</h2>
-        </div>
-        <button class="icon-button" value="close" aria-label="Закрыть">×</button>
-      </div>
+      <div class="yasen-head"><div><span class="leaf-dot"></span><small>ЯСЕНЬ / навигатор</small><h2>Ну, чего ищем?</h2></div><button class="icon-button" value="close" aria-label="Закрыть">×</button></div>
       <p class="yasen-intro">Например: «что у тебя есть про воспитание?», «покажи экологические проекты», «что связано с AI?»</p>
-      <div class="yasen-search">
-        <input id="yasenInput" autocomplete="off" placeholder="Спроси Ясеня…" />
-        <button type="submit">Искать ↗</button>
-      </div>
-      <div class="yasen-examples">
-        <button type="button" data-yasen-query="воспитание">воспитание</button>
-        <button type="button" data-yasen-query="экология">экология</button>
-        <button type="button" data-yasen-query="киноуроки">киноуроки</button>
-        <button type="button" data-yasen-query="AI">AI</button>
-      </div>
-      <div class="yasen-results" id="yasenResults" aria-live="polite">
-        <div class="yasen-empty">Ясень пока молчит. Задай вопрос — и он пошуршит по сайту.</div>
-      </div>
+      <div class="yasen-search"><input id="yasenInput" autocomplete="off" placeholder="Спроси Ясеня…" /><button type="submit">Искать ↗</button></div>
+      <div class="yasen-examples"><button type="button" data-yasen-query="воспитание">воспитание</button><button type="button" data-yasen-query="экология">экология</button><button type="button" data-yasen-query="киноуроки">киноуроки</button><button type="button" data-yasen-query="AI">AI</button></div>
+      <div class="yasen-results" id="yasenResults" aria-live="polite"><div class="yasen-empty">Задай вопрос — Ясень пошуршит по сайту.</div></div>
     </form>
   </dialog>
 
   <dialog class="content-dialog" id="contentDialog">
     <form method="dialog" class="content-shell">
       <button class="icon-button close-content" value="close" aria-label="Закрыть">×</button>
-      <p class="dialog-meta" id="dialogMeta"></p>
-      <h2 id="dialogTitle"></h2>
-      <p id="dialogBody"></p>
-      <div class="dialog-why">
-        <small>Почему это здесь</small>
-        <p id="dialogWhy"></p>
-      </div>
-      <div class="dialog-tags" id="dialogTags"></div>
+      <p class="dialog-meta" id="dialogMeta"></p><h2 id="dialogTitle"></h2><p id="dialogBody"></p>
+      <div class="dialog-why"><small>Почему это здесь</small><p id="dialogWhy"></p></div><div class="dialog-tags" id="dialogTags"></div>
     </form>
   </dialog>
 
-  <script src="app-v3.js?v=3" defer></script>
+  <script src="app-v3.js?v=31" defer></script>
 </body>
 </html>
