@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "description": "Источники для динамического блока «Сейчас». Внешние источники подключаются серверным или build-time адаптером; секретные токены не хранятся в публичном репозитории.",
+  "sources": [
+    { "id": "manual", "type": "manual", "label": "Ясень", "enabled": true },
+    { "id": "vk-aleksey", "type": "vk", "label": "VK · Алексей Горшков", "url": "https://vk.com/aleksey_gor", "enabled": false },
+    { "id": "rss", "type": "rss", "label": "RSS", "feeds": [], "enabled": false }
+  ]
+}
