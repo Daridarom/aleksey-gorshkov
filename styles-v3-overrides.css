@@ -1,0 +1,79 @@
+/* v3.1 — более классическая личная подача + компактные изображения */
+.hero { padding-top: 46px; }
+.hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(280px, .72fr); gap: 42px; min-height: auto; padding-bottom: 34px; }
+.hero h1 { font-family: var(--sans); font-size: clamp(54px, 7vw, 92px); font-weight: 820; line-height: .92; letter-spacing: -.06em; }
+.hero h1 em { display: block; margin-top: 12px; font-family: var(--serif); font-size: .35em; line-height: 1.2; letter-spacing: -.02em; color: #557061; }
+.hero-role { margin: 22px 0 0; max-width: 760px; color: #304239; font-weight: 760; font-size: 14px; line-height: 1.5; }
+.hero-lead { margin-top: 16px; font-family: var(--sans); font-size: 16px; line-height: 1.65; max-width: 700px; }
+.hero-portrait { max-width: 430px; justify-self: end; width: 100%; }
+.portrait-shell { aspect-ratio: 4 / 5; min-height: 0; }
+.portrait-shell picture { width: 100%; height: 100%; }
+.portrait-shell img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 50% 32%; }
+.hero-portrait figcaption { max-width: 400px; }
+
+.about-summary { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; margin-bottom: 14px; }
+.about-copy, .about-roles { border: 1px solid var(--line); border-radius: 26px; background: rgba(255,255,255,.27); padding: 22px; }
+.about-copy p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
+.about-copy p + p { margin-top: 14px; }
+.about-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.about-role { border: 1px solid rgba(16,32,25,.09); border-radius: 17px; padding: 13px; background: rgba(255,255,255,.24); }
+.about-role small { color: #77847c; font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
+.about-role strong { display: block; margin-top: 5px; font-size: 12px; line-height: 1.35; }
+
+.story-layout { grid-template-columns: 340px 1fr; align-items: start; }
+.story-intro { align-self: start; }
+.story-intro picture { height: 210px; overflow: hidden; }
+.story-intro picture img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 50% 20%; }
+.story-intro > div { padding: 18px; }
+.quote { font-size: 19px; }
+
+.projects-before-library { background: rgba(255,255,255,.15); border-block: 1px solid rgba(16,32,25,.07); }
+.library-shell { border: 1px solid var(--line); border-radius: 30px; background: rgba(255,255,255,.22); padding: 22px; }
+.library-intro-grid { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 18px; margin-bottom: 18px; }
+.library-intro-grid p { max-width: 680px; margin: 8px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
+.library-yasen { white-space: nowrap; }
+.connections-details { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+.connections-details > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; font-weight: 800; font-size: 12px; }
+.connections-details > summary::-webkit-details-marker { display: none; }
+.connections-details > summary::after { content: "+"; font-size: 20px; font-weight: 400; }
+.connections-details[open] > summary::after { content: "−"; }
+.connections-details .connection-map { margin-top: 16px; }
+
+.site-header .main-nav a[href="#knowledge"] { font-weight: 800; }
+
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr 320px; gap: 28px; }
+  .hero-portrait { max-width: 320px; }
+  .about-summary { grid-template-columns: 1fr; }
+  .story-layout { grid-template-columns: 280px 1fr; }
+}
+
+@media (max-width: 760px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .hero-copy { order: 1; }
+  .hero-portrait { order: 2; justify-self: start; max-width: 100%; width: 100%; }
+  .portrait-shell { width: 100%; height: 340px; aspect-ratio: auto; border-radius: 24px; }
+  .portrait-shell img { object-position: 50% 28%; }
+  .hero-portrait figcaption { font-size: 10px; }
+  .about-roles { grid-template-columns: 1fr 1fr; }
+  .story-layout { grid-template-columns: 1fr; }
+  .story-intro { display: grid; grid-template-columns: 145px 1fr; }
+  .story-intro picture { height: 100%; min-height: 180px; }
+  .story-intro picture img { object-position: 48% 18%; }
+  .library-intro-grid { grid-template-columns: 1fr; align-items: start; }
+  .library-yasen { justify-self: start; }
+}
+
+@media (max-width: 520px) {
+  .hero { padding-top: 34px; }
+  .hero h1 { font-size: 47px; }
+  .hero h1 em { font-size: .39em; margin-top: 10px; }
+  .hero-role { font-size: 12px; }
+  .hero-lead { font-size: 14px; }
+  .portrait-shell { height: 300px; }
+  .about-roles { grid-template-columns: 1fr; }
+  .story-intro { grid-template-columns: 118px 1fr; }
+  .story-intro picture { min-height: 165px; }
+  .quote { font-size: 16px; }
+  .library-shell { padding: 14px; border-radius: 22px; }
+}
