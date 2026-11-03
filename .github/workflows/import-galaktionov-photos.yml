@@ -27,6 +27,30 @@ jobs:
             --user-agent 'Mozilla/5.0' \
             'https://static.tildacdn.com/tild3166-3530-4661-b861-396135626263/dELlAKpV-K8.jpg' \
             --output galaktionov/assets/galaktionov-bridge-2020-2.jpg
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.24-660x352.jpeg' \
+            --output galaktionov/assets/officers-review-01.jpeg || true
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.26-1-660x401.jpeg' \
+            --output galaktionov/assets/officers-review-02.jpeg || true
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.25-3-660x402.jpeg' \
+            --output galaktionov/assets/officers-review-03.jpeg || true
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.26-2-660x398.jpeg' \
+            --output galaktionov/assets/officers-review-04.jpeg || true
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.26-3-660x383.jpeg' \
+            --output galaktionov/assets/officers-review-05.jpeg || true
+          curl --location --fail --retry 2 --max-time 50 --silent --show-error \
+            --user-agent 'Mozilla/5.0' \
+            'https://www.oficery.ru/wp-content/uploads/2022/02/whatsapp-image-2022-02-02-at-11.01.26-660x423.jpeg' \
+            --output galaktionov/assets/officers-review-06.jpeg || true
           file galaktionov/assets/galaktionov-bridge-2020-{1,2}.jpg
           test "$(stat -c%s galaktionov/assets/galaktionov-bridge-2020-1.jpg)" -gt 5000
           test "$(stat -c%s galaktionov/assets/galaktionov-bridge-2020-2.jpg)" -gt 5000
@@ -35,6 +59,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add galaktionov/assets/galaktionov-bridge-2020-1.jpg galaktionov/assets/galaktionov-bridge-2020-2.jpg
+          git add galaktionov/assets
           git diff --cached --quiet || git commit -m 'Add sourced gallery photos from Most Pokoleniy'
           git push
