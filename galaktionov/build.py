@@ -64,7 +64,7 @@ def picture(pid, sizes_attr, cls="", eager=False, open_lightbox=True):
     if open_lightbox:
         return (f'<button class="photo-open" type="button" data-photo="{pid}" '
                 f'aria-label="Открыть фото крупно: {esc(p["title"])}">{img}'
-                f'<span class="zoom-hint" aria-hidden="true">Увеличить</span></button>')
+                f'<span class="zoom-hint" aria-hidden="true">⤢</span></button>')
     return img
 
 
@@ -155,29 +155,6 @@ def about():
 </section>'''
 
 
-def featured():
-    cards = []
-    for s in DATA["stories"]:
-        if not s.get("featured"):
-            continue
-        quote = s.get("pull")
-        body = (f'<p class="teaser-quote">«{t(quote["text"])}»</p>' if quote else f'<p class="teaser-lead">{t(s["lead"])}</p>')
-        media = ""
-        if s["id"] == "officers":
-            media = f'<div class="teaser-media">{picture("officers-2022-2", "(max-width: 760px) 100vw, 25vw", open_lightbox=False)}</div>'
-        cards.append(f'''<li class="teaser{' has-media' if media else ''}">{media}
-  <div class="teaser-body"><p class="teaser-meta">{t(THEMES[s["theme"]])} · {t(s["years"])}</p>
-  <h3><a href="#{s["id"]}" data-open-story="{s["id"]}">{t(s["title"])}</a></h3>{body}
-  <span class="teaser-more" aria-hidden="true">Читать →</span></div></li>''')
-    return f'''<section class="section featured" id="episodes" aria-labelledby="epTitle">
-  <div class="wrap">
-    <p class="kicker">Главные эпизоды</p>
-    <h2 id="epTitle">С&nbsp;чего начать чтение</h2>
-    <ul class="teasers">{"".join(cards)}</ul>
-  </div>
-</section>'''
-
-
 def timeline():
     periods = []
     for n, per in enumerate(DATA["timeline"], 1):
@@ -222,6 +199,7 @@ def story_article(s):
     <div class="prose reading">{paras}{pull}
       <div class="story-sources"><p class="label">Источники</p><ul>{srcs}</ul></div>
       <div class="story-actions inner">
+        <button type="button" class="act close-story" data-close="{s["id"]}">↑ Свернуть историю</button>
         <button type="button" class="act" data-copy="{s["id"]}">Скопировать ссылку</button>
         <button type="button" class="act" data-print="{s["id"]}">Распечатать историю</button>
       </div>
@@ -246,14 +224,30 @@ def stories():
 </section>'''
 
 
+def meeting_row(m):
+    paras = "".join(f"<p>{t(x)}</p>" for x in m["paragraphs"])
+    srcs = ", ".join(src_link(k, "src small") for k in m["sources"])
+    photo = ""
+    if m.get("photo"):
+        photo = f'<div class="mrow-photo">{picture(m["photo"], "(max-width: 760px) 100vw, 260px")}<p class="mrow-cap">{t(PHOTOS[m["photo"]]["caption"])}</p></div>'
+    return f'''<li class="mrow{' has-photo' if photo else ''}" id="{m["id"]}">
+  <p class="mrow-year">{t(m["years"])}</p>
+  <div class="mrow-body"><h3>{t(m["title"])}</h3><p class="mrow-lead">{t(m["lead"])}</p>
+    <details class="mrow-more"><summary>Подробнее</summary><div class="prose">{paras}
+      <p class="mrow-actions"><button type="button" class="act" data-copy="{m["id"]}">Скопировать ссылку на встречу</button></p></div></details>
+    <p class="mrow-src">Источник: {srcs}</p></div>
+  {photo}
+</li>'''
+
+
 def meetings():
-    cards = "".join(story_article(m) for m in DATA["meetings"])
+    rows = "".join(meeting_row(m) for m in DATA["meetings"])
     return f'''<section class="section meetings" id="meetings" aria-labelledby="mtTitle">
   <div class="wrap">
     <p class="kicker">Встречи поколений</p>
     <h2 id="mtTitle">Со&nbsp;школьниками, студентами и&nbsp;юнармейцами</h2>
-    <p class="section-lead">Телемосты, уроки мужества, музейные встречи и&nbsp;памятные вечера — по&nbsp;годам, у&nbsp;каждой встречи свой источник.</p>
-    <div class="story-list meet-list">{cards}</div>
+    <p class="section-lead">Телемосты, уроки мужества, музейные встречи и&nbsp;памятные вечера — по&nbsp;годам. Нажмите «Подробнее», чтобы прочитать о&nbsp;встрече.</p>
+    <ol class="mrows">{rows}</ol>
   </div>
 </section>'''
 
@@ -296,8 +290,7 @@ def video():
     more = "".join(f'<li><a href="{esc(SRC[m["source"]]["url"])}" target="_blank" rel="noopener noreferrer"><strong>{t(m["title"])}</strong>'
                    f'<span>{t(m["note"])}</span><span class="ext" aria-hidden="true">↗</span></a></li>' for m in v["more"])
     audio_url = esc(SRC["voice"]["url"])
-    audio = "".join(f'<li><a href="{audio_url}" target="_blank" rel="noopener noreferrer"><span class="a-num">{i:02d}</span>{t(a)}</a></li>'
-                    for i, a in enumerate(v["audio"], 1))
+    audio = "".join(f'<li><span class="a-num">{i:02d}</span>{t(a)}</li>' for i, a in enumerate(v["audio"], 1))
     return f'''<section class="section video" id="video" aria-labelledby="vdTitle">
   <div class="wrap">
     <p class="kicker">Видео и голос</p>
@@ -313,6 +306,7 @@ def video():
       <h3>Воспоминания от&nbsp;первого лица</h3>
       <p>{t(v["audio_intro"])}</p>
       <ol class="audio-list">{audio}</ol>
+      <p><a class="btn primary" href="{audio_url}" target="_blank" rel="noopener noreferrer">Слушать записи на&nbsp;странице автора ↗</a></p>
     </div>
   </div>
 </section>'''
@@ -368,6 +362,7 @@ def footer():
     <div class="lb-caption" id="lbCaption"></div>
   </div>
 </dialog>
+<a class="float-top" id="floatTop" href="#home" aria-label="Наверх, к началу страницы">↑ Наверх</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>'''
 
 
