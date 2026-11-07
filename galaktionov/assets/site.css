@@ -389,3 +389,8 @@ html.hc .photos { background: #fff; }
   .share-btn, .story > .story-body[open] ~ .share-btn { grid-column: 1; justify-self: start; min-height: 44px; }
   .story-body summary { width: 100%; justify-content: center; }
 }
+
+/* Портретные (вертикальные) снимки — без обрезки */
+.doc-photo.portrait .photo-open { aspect-ratio: auto; max-width: 340px; }
+.doc-photo.portrait .photo-open img { height: auto; }
+.period-photo.portrait .photo-open { max-width: 100%; }
