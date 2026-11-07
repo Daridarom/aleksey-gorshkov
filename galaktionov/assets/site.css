@@ -380,8 +380,8 @@ html.hc .photos { background: #fff; }
   .story-body:not([open]) > :not(summary) { display: block; }
   a::after { content: " (" attr(href) ")"; font-size: 9pt; color: #444; word-break: break-all; }
   .photo-open { background: none; }
-  body.print-one main > *:not(#stories), body.print-one .site-footer { display: none !important; }
-  body.print-one #stories .story:not(.print-target), body.print-one #stories .group-title, body.print-one #stories > .wrap > :not(.featured-stories):not(.story-group) { display: none !important; }
+  body.print-one main > section:not(:has(.print-target)), body.print-one .site-footer { display: none !important; }
+  body.print-one .story:not(.print-target), body.print-one .group-title, body.print-one .section-lead, body.print-one .kicker, body.print-one main h2 { display: none !important; }
   body.print-one .story { border: 0; }
 }
 @media (max-width: 520px) {
@@ -394,3 +394,4 @@ html.hc .photos { background: #fff; }
 .doc-photo.portrait .photo-open { aspect-ratio: auto; max-width: 340px; }
 .doc-photo.portrait .photo-open img { height: auto; }
 .period-photo.portrait .photo-open { max-width: 100%; }
+.meet-list .theme-tag { display: none; }
