@@ -21,6 +21,7 @@ SRC = DATA["sources"]
 PHOTOS = {p["id"]: p for p in DATA["photos"]}
 THEMES = {t["id"]: t["title"] for t in DATA["themes"]}
 STORIES = {s["id"]: s for s in DATA["stories"]}
+MEETS = {m["id"]: m for m in DATA["meetings"]}
 
 NBSP_WORDS = r"(?:в|и|с|к|о|у|а|я|на|не|по|за|из|от|до|во|со|об|ко|но|же|ли)"
 
@@ -89,7 +90,7 @@ def figure(pid, sizes_attr, cls="", eager=False):
 # ---------------------------------------------------------------- sections
 
 def header():
-    nav = [("life", "О человеке"), ("timeline", "Хронология"), ("stories", "Истории"),
+    nav = [("life", "О человеке"), ("stories", "Истории"), ("timeline", "Хронология"),
            ("meetings", "Встречи"), ("photos", "Фото"), ("video", "Видео"), ("sources", "Источники")]
     links = "".join(f'<a href="#{i}">{n}</a>' for i, n in nav)
     return f'''<header class="site-header" id="top">
@@ -183,8 +184,10 @@ def timeline():
         evs = []
         for e in per["events"]:
             srcs = ", ".join(src_link(k, "src small") for k in e["sources"])
-            story = (f' <a class="ev-story" href="#{e["story"]}" data-open-story="{e["story"]}">История →</a>'
-                     if e.get("story") else "")
+            story = ""
+            if e.get("story"):
+                label = "История →" if (e["story"] in STORIES or e["story"] in MEETS) else "Смотреть →"
+                story = f' <a class="ev-story" href="#{e["story"]}" data-open-story="{e["story"]}">{label}</a>'
             evs.append(f'<li><p class="ev-date">{t(e["date"])}</p><p class="ev-text">{t(e["text"])}{story}</p>'
                        f'<p class="ev-src">{srcs}</p></li>')
         photo = figure(per["photo"], "(max-width: 760px) 100vw, 34vw", "period-photo") if per.get("photo") else ""
@@ -229,55 +232,45 @@ def story_article(s):
 
 
 def stories():
-    chips = '<button type="button" class="chip" data-filter="all" aria-pressed="true">Все истории</button>' + "".join(
-        f'<button type="button" class="chip" data-filter="{tid}" aria-pressed="false">{t(title)}</button>'
-        for tid, title in THEMES.items())
-    feat = "".join(story_article(s) for s in DATA["stories"] if s.get("featured"))
-    groups = []
-    for tid, title in THEMES.items():
-        items = [s for s in DATA["stories"] if s["theme"] == tid and not s.get("featured")]
-        if items:
-            groups.append(f'<div class="story-group" data-group="{tid}"><h3 class="group-title">{t(title)}</h3>'
-                          f'<div class="story-list">{"".join(story_article(s) for s in items)}</div></div>')
+    feat = "".join(story_article(x) for x in DATA["stories"] if x.get("featured"))
+    rest = "".join(story_article(x) for x in DATA["stories"] if not x.get("featured"))
     return f'''<section class="section stories" id="stories" aria-labelledby="stTitle">
   <div class="wrap">
-    <p class="kicker">Истории</p>
-    <h2 id="stTitle">Рассказы, которые стоит сохранить</h2>
-    <p class="section-lead">Пересказы по&nbsp;проверенным публикациям — своими словами, с&nbsp;источником под каждой историей. Ссылкой на&nbsp;любую историю можно поделиться.</p>
-    <div class="story-tools no-js-hide">
-      <div class="chips" role="group" aria-label="Темы историй">{chips}</div>
-      <label class="search"><span class="visually-hidden">Поиск по историям</span>
-        <input type="search" id="storySearch" placeholder="Поиск: брат, Ахматова, юнармейцы…" autocomplete="off"></label>
-      <p class="search-status" id="searchStatus" aria-live="polite"></p>
-    </div>
+    <p class="kicker">Главные эпизоды</p>
+    <h2 id="stTitle">Истории жизни</h2>
+    <p class="section-lead">Пересказы по&nbsp;проверенным публикациям и&nbsp;воспоминаниям самого Владимира Георгиевича. Под каждой историей — источник; ссылкой на&nbsp;любую можно поделиться.</p>
     <div class="featured-stories">{feat}</div>
-    {"".join(groups)}
+    <h3 class="group-title">Ещё истории</h3>
+    <div class="story-list">{rest}</div>
   </div>
 </section>'''
 
 
 def meetings():
-    cards = []
-    for m in DATA["meetings"]:
-        media = f'<div class="meet-media">{picture(m["photo"], "(max-width: 760px) 100vw, 30vw")}</div>' if m.get("photo") else ""
-        story = (f'<a class="meet-story" href="#{m["story"]}" data-open-story="{m["story"]}">Читать историю →</a>'
-                 if m.get("story") else "")
-        cards.append(f'''<li class="meet{' with-media' if media else ''}">{media}<div class="meet-body">
-  <p class="meet-year">{t(m["year"])}</p><h3>{t(m["title"])}</h3><p>{t(m["text"])}</p>
-  <p class="meet-links">{story} {src_link(m["source"], "src small")}</p></div></li>''')
+    cards = "".join(story_article(m) for m in DATA["meetings"])
     return f'''<section class="section meetings" id="meetings" aria-labelledby="mtTitle">
   <div class="wrap">
     <p class="kicker">Встречи поколений</p>
     <h2 id="mtTitle">Со&nbsp;школьниками, студентами и&nbsp;юнармейцами</h2>
-    <ul class="meet-grid">{"".join(cards)}</ul>
+    <p class="section-lead">Телемосты, уроки мужества, музейные встречи и&nbsp;памятные вечера — по&nbsp;годам, у&nbsp;каждой встречи свой источник.</p>
+    <div class="story-list meet-list">{cards}</div>
   </div>
 </section>'''
 
 
+def placed_photos():
+    ids = {"hero-2020s", "blago-2015-portrait"}
+    ids |= {p["photo"] for p in DATA["timeline"] if p.get("photo")}
+    ids |= {x["photo"] for x in DATA["stories"] + DATA["meetings"] if x.get("photo")}
+    return ids
+
+
 def gallery():
     items = []
+    placed = placed_photos()
+    total = sum(1 for p in DATA["photos"] if p.get("publish"))
     for p in DATA["photos"]:
-        if not p.get("publish"):
+        if not p.get("publish") or p["id"] in placed:
             continue
         items.append(f'''<li class="g-item"><figure>{picture(p["id"], "(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 33vw")}
   <figcaption><span class="g-date">{t(p["date"])}</span><span class="g-title">{t(p["title"])}</span>
@@ -285,9 +278,9 @@ def gallery():
     n = len(items)
     return f'''<section class="section photos" id="photos" aria-labelledby="phTitle">
   <div class="wrap">
-    <p class="kicker">Фотоархив</p>
+    <p class="kicker">Фотоальбом</p>
     <h2 id="phTitle">Фотографии</h2>
-    <p class="section-lead">{n} снимков — от&nbsp;блокадной зимы 1942&nbsp;года до&nbsp;встреч с&nbsp;молодёжью. Нажмите на&nbsp;фото, чтобы увеличить; листайте стрелками или пальцем. Под каждым снимком — дата, автор и&nbsp;публикация.</p>
+    <p class="section-lead">Всего на&nbsp;сайте {total} снимков, каждый — один раз: семейные фото стоят в&nbsp;историях и&nbsp;хронологии, снимки встреч — у&nbsp;своих встреч, а&nbsp;здесь — остальные. Нажмите на&nbsp;любое фото, чтобы увеличить и&nbsp;листать все {total}.</p>
     <ul class="gallery">{"".join(items)}</ul>
     <aside class="note-card">
       <h3>Ещё 20 снимков — у&nbsp;РИА Новости</h3>
@@ -427,9 +420,8 @@ def page():
 <main id="main">
 {hero()}
 {about()}
-{featured()}
-{timeline()}
 {stories()}
+{timeline()}
 {meetings()}
 {gallery()}
 {video()}
@@ -449,7 +441,7 @@ def write_sources_csv():
         w = csv.writer(f, delimiter=";")
         w.writerow(["Код", "Организация", "Публикация", "Дата", "URL", "Где используется"])
         for k, s in SRC.items():
-            used = [st["id"] for st in DATA["stories"] if k in st["sources"]]
+            used = [st["id"] for st in DATA["stories"] + DATA["meetings"] if k in st["sources"]]
             used += [p["id"] for p in DATA["photos"] if p.get("source") == k]
             w.writerow([k, s["org"], s["title"], s.get("date", ""), s["url"], ", ".join(used)])
 
