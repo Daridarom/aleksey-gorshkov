@@ -61,6 +61,7 @@
   function storyUrl(id) { return location.href.split('#')[0] + '#' + id; }
   function openStory(id, scroll) {
     var el = document.getElementById(id);
+    if (el && el.classList.contains('mrow')) { var md = $('details', el); if (md) md.open = true; if (scroll) el.scrollIntoView({ block: 'start' }); return true; }
     if (!el || !el.classList.contains('story')) return false;
     if (el.classList.contains('hidden')) resetFilters();
     var d = $('details', el);
@@ -112,6 +113,23 @@
       } else { copyLink(id); }
     });
   });
+
+  /* ---------- Свернуть историю (кнопка в конце текста) ---------- */
+  $$('[data-close]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var art = document.getElementById(b.getAttribute('data-close'));
+      var d = $('details', art); if (d) d.open = false;
+      art.scrollIntoView({ block: 'start' });
+      var s = $('summary', art); if (s) s.focus({ preventScroll: true });
+    });
+  });
+
+  /* ---------- Кнопка «Наверх» ---------- */
+  var ft = $('#floatTop');
+  if (ft) {
+    var onScroll = function () { ft.classList.toggle('show', window.scrollY > window.innerHeight * 2); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
 
   /* ---------- Печать ---------- */
   var openedForPrint = [];
