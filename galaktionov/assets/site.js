@@ -63,7 +63,6 @@
     var el = document.getElementById(id);
     if (el && el.classList.contains('mrow')) { var md = $('details', el); if (md) md.open = true; if (scroll) el.scrollIntoView({ block: 'start' }); return true; }
     if (!el || !el.classList.contains('story')) return false;
-    if (el.classList.contains('hidden')) resetFilters();
     var d = $('details', el);
     if (d) d.open = true;
     if (scroll) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
@@ -154,42 +153,6 @@
     document.body.classList.remove('print-one');
     $$('.print-target').forEach(function (a) { a.classList.remove('print-target'); });
   });
-
-  /* ---------- Фильтры и поиск ---------- */
-  var chips = $$('.chip'), search = $('#storySearch'), status = $('#searchStatus');
-  var stories = $$('#stories .story');
-  var activeTheme = 'all';
-  function norm(s) { return (s || '').toLowerCase().replace(/ё/g, 'е'); }
-  function applyFilters() {
-    var q = norm(search ? search.value.trim() : '');
-    var shown = 0;
-    stories.forEach(function (s) {
-      var ok = (activeTheme === 'all' || s.dataset.theme === activeTheme) && (!q || norm(s.dataset.search || (s.dataset.search = s.textContent)).indexOf(q) !== -1);
-      s.classList.toggle('hidden', !ok);
-      if (ok) shown++;
-    });
-    $$('#stories .story-group').forEach(function (g) {
-      g.classList.toggle('hidden', !$('.story:not(.hidden)', g));
-    });
-    if (status) {
-      if (!q && activeTheme === 'all') status.textContent = '';
-      else status.textContent = shown ? ('Найдено историй: ' + shown) : 'Ничего не найдено. Попробуйте другое слово или выберите «Все истории».';
-    }
-  }
-  function resetFilters() {
-    activeTheme = 'all';
-    if (search) search.value = '';
-    chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.filter === 'all' ? 'true' : 'false'); });
-    applyFilters();
-  }
-  chips.forEach(function (c) {
-    c.addEventListener('click', function () {
-      activeTheme = c.dataset.filter;
-      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
-      applyFilters();
-    });
-  });
-  if (search) search.addEventListener('input', applyFilters);
 
   /* ---------- Просмотр фото ---------- */
   var lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCaption'), lbCount = $('#lbCount');

@@ -155,29 +155,6 @@ def about():
 </section>'''
 
 
-def featured():
-    cards = []
-    for s in DATA["stories"]:
-        if not s.get("featured"):
-            continue
-        quote = s.get("pull")
-        body = (f'<p class="teaser-quote">«{t(quote["text"])}»</p>' if quote else f'<p class="teaser-lead">{t(s["lead"])}</p>')
-        media = ""
-        if s["id"] == "officers":
-            media = f'<div class="teaser-media">{picture("officers-2022-2", "(max-width: 760px) 100vw, 25vw", open_lightbox=False)}</div>'
-        cards.append(f'''<li class="teaser{' has-media' if media else ''}">{media}
-  <div class="teaser-body"><p class="teaser-meta">{t(THEMES[s["theme"]])} · {t(s["years"])}</p>
-  <h3><a href="#{s["id"]}" data-open-story="{s["id"]}">{t(s["title"])}</a></h3>{body}
-  <span class="teaser-more" aria-hidden="true">Читать →</span></div></li>''')
-    return f'''<section class="section featured" id="episodes" aria-labelledby="epTitle">
-  <div class="wrap">
-    <p class="kicker">Главные эпизоды</p>
-    <h2 id="epTitle">С&nbsp;чего начать чтение</h2>
-    <ul class="teasers">{"".join(cards)}</ul>
-  </div>
-</section>'''
-
-
 def timeline():
     periods = []
     for n, per in enumerate(DATA["timeline"], 1):
